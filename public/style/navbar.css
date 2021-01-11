@@ -1,0 +1,40 @@
+.navbar {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .9);
+    height: 80px;
+}
+
+.navbar-container {
+    width: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    color: #ffffff;
+}
+
+.navbar-item {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.navbar-item a {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.navbar-item a:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
