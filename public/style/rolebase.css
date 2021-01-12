@@ -1,0 +1,112 @@
+
+
+.container {
+    width: 80%;
+    margin: 80px auto 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.side-one, .side-two {
+    border: 1px solid black;
+    flex: 1 1 0;
+}
+
+.side-one, .side-two {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.que {
+    justify-content: space-evenly!important;
+}
+
+.row > * {
+    height: 100%;
+    width: 100%;
+}
+
+.row > div {
+    display: flex;
+    border-radius: 12px;
+}
+
+.side-header {
+    justify-content: center;
+    align-items: center;
+    border-radius: 0!important;
+}
+
+.side-header-text {
+    margin: 0;
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.blue {
+    background: url('/img/blue.jpg');
+}
+
+.red {
+    background: url('/img/red.jpg');
+}
+
+/* SIDE ONE CONTENT */
+
+.king {
+    background-color: red;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+
+.queen {
+    background-color: red;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+
+.guard {
+    background-color: red;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+
+.citizen {
+    background-color: red;
+    width: 70px;
+    height: 70px;
+    align-self: center;
+}
+
+.foot-row {
+    display: flex;
+    height: 70px;
+    justify-content: center;
+}
+
+.rastgele-rol-sec-button {
+    padding: 20px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    color: #000000;
+    border-radius: 16px;
+}
+
+.rastgele-rol-sec-button:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
