@@ -16,6 +16,10 @@ app.get('/rolebase', (req, res) => {
   res.render('rolebase/chooseRole.ejs')
 })
 
+app.get('/rolprofile', (req, res) => {
+  res.render('rolebase/rolprofile.ejs')
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })
