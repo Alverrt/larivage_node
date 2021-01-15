@@ -16,8 +16,8 @@ app.get('/rolebase', (req, res) => {
   res.render('rolebase/chooseRole.ejs')
 })
 
-app.get('/rolprofile', (req, res) => {
-  res.render('rolebase/rolprofile.ejs')
+app.get('/roleprofile', (req, res) => {
+  res.render('roleprofile/roleprofile.ejs')
 })
 
 app.listen(port, () => {

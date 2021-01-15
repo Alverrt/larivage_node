@@ -1,0 +1,34 @@
+.foot-row {
+    display: flex;
+    flex-direction: column;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+    width: 80%;
+    margin: 0 auto;
+    background: url('/img/button-bg.png');
+}
+
+.button-head-text {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 70%;
+}
+
+.rastgele-rol-sec-button {
+    padding: 20px 50px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 3px solid #416e27;
+    color: #416e27;
+    width: 20%;
+}
+
+.rastgele-rol-sec-button:hover {
+    background-color: #416e27;
+    color: #ffffff;
+}

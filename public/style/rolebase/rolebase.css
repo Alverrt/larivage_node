@@ -1,9 +1,7 @@
 
-
 .container {
     width: 80%;
     margin: 80px auto 0 auto;
-    height: 100%;
     display: flex;
     justify-content: space-between;
 }
@@ -39,7 +37,7 @@
     height: 100%;
     width: 100%;
 }
-/*
+
 .row-header > .blue {
     filter: drop-shadow(5px 5px 8px #4444dd);
 }
@@ -47,7 +45,7 @@
 .row-header > .red {
     filter: drop-shadow(5px 5px 8px #dd4444);
 }
-*/
+
 .row > div {
     display: flex;
     border-radius: 12px;
@@ -116,25 +114,4 @@
     width: 70px;
     height: 70px;
     align-self: center;
-}
-
-.foot-row {
-    display: flex;
-    height: 70px;
-    justify-content: center;
-}
-
-.rastgele-rol-sec-button {
-    padding: 20px 50px;
-    font-size: 20px;
-    cursor: pointer;
-    background-color: #ffffff;
-    border: 1px solid #000000;
-    color: #000000;
-    border-radius: 16px;
-}
-
-.rastgele-rol-sec-button:hover {
-    background-color: #000000;
-    color: #ffffff;
 }

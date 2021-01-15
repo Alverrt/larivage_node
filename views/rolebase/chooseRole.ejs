@@ -3,7 +3,8 @@
 <head>
     
         <link rel="stylesheet" href="style/navbar.css" type="text/css">
-        <link rel="stylesheet" href="style/rolebase.css" type="text/css">
+        <link rel="stylesheet" href="style/rolebase/rolebase.css" type="text/css">
+        <link rel="stylesheet" href="style/rolebase/rolebaseBottom.css" type="text/css">
         <%- include('../utils/head.ejs') %>
 </head>
 
@@ -58,9 +59,6 @@
                             <img src="/img/icons/042-shield.svg" alt="">
                         </div>
                     </div>
-                    <div class="foot-row">
-                        <button class="rastgele-rol-sec-button">Rastgele Rol Seç</button>
-                    </div>
                 </div>
                 <div class="mid-vertical-line"></div>
                 <div class="side-two">
@@ -110,10 +108,10 @@
                             <img src="/img/icons/042-shield.svg" alt="">
                         </div>
                     </div>
-                    <div class="foot-row">
-                        <button class="rastgele-rol-sec-button">Rastgele Rol Seç</button>
-                    </div>
                 </div>
+            </div>
+            <div class="footer-area">
+                <%- include('./rolebaseBottom.ejs')  %> 
             </div>
         </div>
 </body>
