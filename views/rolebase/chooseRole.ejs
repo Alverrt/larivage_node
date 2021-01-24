@@ -9,7 +9,9 @@
 </head>
 
 <body>
+    <div id="toolbox" style="display: none; padding: 5px; position: absolute; background-color: rgb(65, 50, 50); border: 1px solid #ffffff; color: #ffffff; z-index: 11;"></div>
     <%- include('../navbar.ejs') %>
+    <div class="bg">
         <div class="wraper">
             <div class="container">
                 <div class="side-one">
@@ -19,46 +21,46 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="king blues">
+                        <div class="king blues role" data-role-desc="Kont">
                             <img src="/img/icons/kont.svg" alt="">
                         </div>
                     </div>
                     <div class="row que">
-                        <div class="queen blues">
+                        <div class="queen blues role" data-role-desc="Muhafız Kumandanı">
                             <img src="/img/icons/kumandan.svg" alt="">
                         </div>
-                        <div class="queen blues">
+                        <div class="queen blues role" data-role-desc="Vali">
                             <img src="/img/icons/vali.svg" alt="">
                         </div>
-                        <div class="queen blues">
+                        <div class="queen blues role" data-role-desc="Lonca Başkanı">
                             <img src="/img/icons/lonca-baskani.svg" alt="">
                         </div>
-                        <div class="queen blues">
+                        <div class="queen blues role" data-role-desc="Baş Rahip">
                             <img src="/img/icons/bas-rahip.svg" alt="">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="guard blues">
+                        <div class="guard blues role" data-role-desc="Muhafız Eri">
                             <img src="/img/icons/muhafiz.svg" alt="">
                         </div>
-                        <div class="guard blues">
+                        <div class="guard blues role" data-role-desc="Muhtar">
                             <img src="/img/icons/farmer.svg" alt="">
                         </div>
-                        <div class="guard blues">
+                        <div class="guard blues role" data-role-desc="Rahip">
                             <img src="/img/icons/rahip.svg" alt="">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="citizen blues">
+                        <div class="citizen blues role" data-role-desc="Demirci">
                             <img src="/img/icons/demirci.svg" alt="">
                         </div>
-                        <div class="citizen blues">
+                        <div class="citizen blues role" data-role-desc="Terzi">
                             <img src="/img/icons/terzi.svg" alt="">
                         </div>
-                        <div class="citizen blues">
+                        <div class="citizen blues role" data-role-desc="Hancı">
                             <img src="/img/icons/hanci.svg" alt="">
                         </div>
-                        <div class="citizen blues">
+                        <div class="citizen blues role" data-role-desc="Seyis">
                             <img src="/img/icons/seyis.svg" alt="">
                         </div>
                     </div>
@@ -71,46 +73,46 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="king reds">
+                        <div class="king reds role" data-role-desc="İsyancı Lideri">
                             <img src="/img/icons/isyanci.svg" alt="">
                         </div>
                     </div>
                     <div class="row que">
-                        <div class="queen reds">
+                        <div class="queen reds role" data-role-desc="Orman Haydut Lideri">
                             <img src="/img/icons/orman-haydutu-lideri.svg" alt="">
                         </div>
-                        <div class="queen reds">
+                        <div class="queen reds role" data-role-desc="Ayrılıkçılar">
                             <img src="/img/icons/ayrilikcilar.svg" alt="">
                         </div>
-                        <div class="queen reds">
+                        <div class="queen reds role" data-role-desc="İsyan Askeri">
                             <img src="/img/icons/isyan-askeri.svg" alt="">
                         </div>
-                        <div class="queen reds">
+                        <div class="queen reds role" data-role-desc="Çiftlik Sahibi">
                             <img src="/img/icons/ciftlik-sahibi.svg" alt="">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="guard reds">
+                        <div class="guard reds role" data-role-desc="Çapulcu">
                             <img src="/img/icons/capulcu.svg" alt="">
                         </div>
-                        <div class="guard reds">
+                        <div class="guard reds role" data-role-desc="Kelle Avcısı">
                             <img src="/img/icons/kelle-avcisi.svg" alt="">
                         </div>
-                        <div class="guard reds">
+                        <div class="guard reds role" data-role-desc="Çiftçi">
                             <img src="/img/icons/ciftci.svg" alt="">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="citizen reds">
+                        <div class="citizen reds role" data-role-desc="Kumarbaz">
                             <img src="/img/icons/kumarbaz.svg" alt="">
                         </div>
-                        <div class="citizen reds">
+                        <div class="citizen reds role" data-role-desc="Gammazcı">
                             <img src="/img/icons/gambazci.svg" alt="">
                         </div>
-                        <div class="citizen reds">
+                        <div class="citizen reds role" data-role-desc="Marangoz">
                             <img src="/img/icons/marangoz.svg" alt="">
                         </div>
-                        <div class="citizen reds">
+                        <div class="citizen reds role" data-role-desc="Yalen Sığınmacıları">
                             <img src="/img/icons/yalen-siginmacilari.svg" alt="">
                         </div>
                     </div>
@@ -120,6 +122,8 @@
                 <%- include('./rolebaseBottom.ejs')  %> 
             </div>
         </div>
+    </div>
+        <script src="/JS/roleBaseMouseEffect.js"></script>
 </body>
 
 </html>
