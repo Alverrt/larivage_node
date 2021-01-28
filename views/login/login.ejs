@@ -11,13 +11,13 @@
             <div class="login-form">
                 <p class="login-form-header">La Rivage Rol Dağıtım Sistemi</p>
                 <div class="login-form-components">
-                    <form class="form-tag" action="">
+                    <form class="form-tag" method="POST" action="/login">
                         <p class="guid-label">GUID:</p>
-                        <input type="text"> <!-- only number check -->
+                        <input type="text" inputmode="numeric" name="guid" id="guidArea"> <!-- only number check -->
                         <p class="nick-label">IC Seçtiğiniz Nick:</p>
-                        <input type="text"> <!-- nick -->
+                        <input type="text" name="nick"> <!-- nick -->
                         <p class="dc-label">Discord Adresiniz:</p>
-                        <input type="text"> <!-- nick -->
+                        <input type="text" name="dc">
                         <button class="login-button" type="submit">Giris Yap</button>
                     </form>
                 </div>
