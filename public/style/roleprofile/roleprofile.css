@@ -81,7 +81,6 @@
 .character-story-child {
     height: 95%;
     width: 95%;
-    border: 1px solid green;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -93,9 +92,11 @@
     flex: 0 1 30%;
     font-size: 20px;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
     text-align: center;
+    border: 1px solid #ffffff;
+    background-color: rgba(0, 0, 0, .4);
 }
 
 .question-options {
@@ -129,4 +130,25 @@
     flex: 0 1 20%;
     height: 95%;
     border: 1px solid turquoise;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-evenly;
+}
+
+.button-group > button {
+    border: 1px solid #ffffff;
+    background-color: rgba(0, 0, 0, .8);
+    color: #ffffff;
+    font-size: 16px;
+    width: 85%;
+    min-height: 16%;
+    cursor: pointer;
+}
+
+.button-group > button:hover {
+    border: 1px dashed #000000;
+    background-color: rgba(255, 255, 255, .8);
+    color: #000000;
 }

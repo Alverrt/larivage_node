@@ -23,18 +23,24 @@
                             </div>
                             <div class="character-story">
                                 <div class="character-story-child">
-                                    <%- include('./questionArea.ejs', { sorular: sorular[5] })  %> 
+                                    <%- include('./questionArea.ejs', { sorular: sorular[index] })  %> 
                                 </div>
                             </div>
                         </div>
                         <div class="frame-row-small">
                             <div class="task-area"></div>
-                            <div class="button-group"></div>
+                            <div class="button-group">
+                                <button id="next-ques">Sonraki Soru</button>
+                                <button id="prev-ques">Önceki Soru</button>
+                                <button id="dc-link">Discord Link</button>
+                                <button id="send">Başvuru Gönder</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script src="/JS/roleProfile.js"></script>
 </body>
 
 </html>

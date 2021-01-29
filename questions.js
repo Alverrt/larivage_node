@@ -1,6 +1,6 @@
 const sorular = [
     {
-        soru: '...... şehrinde dünyaya gözlerini açtın..',
+        soru: 'Svadya Krallığı\'nın ...... şehrinde dünyaya gözlerini açtın..',
         secenek1: 'Praven',
         secenek2: 'Suno',
         secenek3: 'Uxhal',

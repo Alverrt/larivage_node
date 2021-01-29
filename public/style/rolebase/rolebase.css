@@ -115,3 +115,7 @@
     height: 70px;
     align-self: center;
 }
+
+.role > img {
+    width: 100%;
+}

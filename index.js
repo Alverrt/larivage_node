@@ -38,9 +38,10 @@ app.get('/rolebase', checkSession, (req, res) => {
 })
 
 const avatar = { }
+let index = 0
 
 app.get('/roleprofile', checkSession, (req, res) => {
-  res.render('roleprofile/roleprofile.ejs', { avatar, sorular })
+  res.render('roleprofile/roleprofile.ejs', { avatar, sorular, index })
 })
 
 app.post('/login', (req, res) => {
@@ -52,6 +53,17 @@ app.post('/roleinfo', checkSession, (req, res) => {
   avatar.img = req.body.imgsrc
   avatar.label = req.body.label
   res.redirect('/roleprofile')
+})
+
+app.post('/question', (req, res) => {
+  if (req.body.index == 1 && index != 5) {
+    index += 1
+  } else if (req.body.index == 0 && index != 0) {
+    index -= 1
+  }
+  // res.redirect('/roleprofile')
+  res.sendStatus(200)
+  console.log(req.body.index)
 })
 
 app.listen(port, () => {
