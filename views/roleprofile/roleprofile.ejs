@@ -14,11 +14,17 @@
                     <div class="role-profile-frame">
                         <div class="frame-row-big">
                             <div class="portre-frame">
-                                <div class="portre"></div>
-                                <div class="portre-label"></div>
+                                <div class="portre">
+                                    <img width="65%" src=<%= avatar.img %>  alt="avatar">
+                                </div>
+                                <div class="portre-label">
+                                    <p><%= avatar.label %></p> 
+                                </div>
                             </div>
                             <div class="character-story">
-                                <div class="character-story-child"></div>
+                                <div class="character-story-child">
+                                    <%- include('./questionArea.ejs', { sorular: sorular[5] })  %> 
+                                </div>
                             </div>
                         </div>
                         <div class="frame-row-small">

@@ -1,6 +1,5 @@
 const roles = document.querySelectorAll(".role");
 const toolBox = document.getElementById('toolbox')
-console.log(roles);
 
 
 

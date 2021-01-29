@@ -1,10 +1,13 @@
 const express = require('express')
 const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
+
+const sorular = require('./questions.js');
+
 const app = express()
 const port = 3000
 
-app.use(express.static(__dirname + '/public', {redirect: false} ))
+app.use(express.static(__dirname + '/public'/*, { redirect: false }*/))
 app.set('view engine', 'ejs')
 app.set('views', process.cwd() + '/views')
 app.use(express.urlencoded({ extended: false }))
@@ -19,7 +22,7 @@ const checkSession = (req, res, next) => {
     res.redirect('/')
   }
   next()
-} 
+}
 
 
 app.get('/', (req, res) => {
@@ -34,13 +37,21 @@ app.get('/rolebase', checkSession, (req, res) => {
   res.render('rolebase/chooseRole.ejs')
 })
 
+const avatar = { }
+
 app.get('/roleprofile', checkSession, (req, res) => {
-  res.render('roleprofile/roleprofile.ejs')
+  res.render('roleprofile/roleprofile.ejs', { avatar, sorular })
 })
 
 app.post('/login', (req, res) => {
   req.session.guid = req.body.guid
   res.redirect('/rolebase')
+})
+
+app.post('/roleinfo', checkSession, (req, res) => {
+  avatar.img = req.body.imgsrc
+  avatar.label = req.body.label
+  res.redirect('/roleprofile')
 })
 
 app.listen(port, () => {
