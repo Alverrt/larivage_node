@@ -3,6 +3,7 @@ const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
 
 const sorular = require('./questions.js');
+const descs = require('./roledescs.js');
 
 const app = express()
 const port = 3000
@@ -52,11 +53,13 @@ app.post('/login', (req, res) => {
 app.post('/roleinfo', checkSession, (req, res) => {
   avatar.img = req.body.imgsrc
   avatar.label = req.body.label
+  let roleCode = parseInt(req.body.roleCode)
+  avatar.desc =  descs[roleCode]
   res.redirect('/roleprofile')
 })
 
 app.post('/question', (req, res) => {
-  if (req.body.index == 1 && index != 5) {
+  if (req.body.index == 1 && index != 6) {
     index += 1
   } else if (req.body.index == 0 && index != 0) {
     index -= 1

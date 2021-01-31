@@ -1,40 +1,46 @@
-<div class="question-area">
-    <p>
-        <%= sorular.soru %>
-    </p>
-</div>
-<form method="POST">
-    <div class="question-options">
-
-        <div>
-            <input type="radio" name="gender" id="sec1" value="secenek1">
-            <label for="sec1">
-                <%= sorular.secenek1 %>
-            </label>
-        </div>
-        <div>
-            <input type="radio" name="gender" id="sec2" value="secenek2">
-            <label for="sec2">
-                <%= sorular.secenek2 %>
-            </label>
-        </div>
-        <div>
-            <input type="radio" name="gender" id="sec3" value="secenek3">
-            <label for="sec3">
-                <%= sorular.secenek3 %>
-            </label>
-        </div>
-        <div>
-            <input type="radio" name="gender" id="sec4" value="secenek4">
-            <label for="sec4">
-                <%= sorular.secenek4 %>
-            </label>
-        </div>
-        <div>
-            <input type="radio" name="gender" id="sec5" value="secenek5">
-            <label for="sec5">
-                <%= sorular.secenek5 %>
-            </label>
-        </div>
+<% if (!sorular.hasOwnProperty('bitti')) { %>
+    <div class="question-area">
+        <p>
+            <%= sorular.soru %>
+        </p>
     </div>
-</form>
+    <form method="POST">
+        <div class="question-options">
+
+            <div>
+                <input type="radio" name="gender" id="sec1" value="secenek1">
+                <label for="sec1">
+                    <%= sorular.secenek1 %>
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="sec2" value="secenek2">
+                <label for="sec2">
+                    <%= sorular.secenek2 %>
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="sec3" value="secenek3">
+                <label for="sec3">
+                    <%= sorular.secenek3 %>
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="sec4" value="secenek4">
+                <label for="sec4">
+                    <%= sorular.secenek4 %>
+                </label>
+            </div>
+            <div>
+                <input type="radio" name="gender" id="sec5" value="secenek5">
+                <label for="sec5">
+                    <%= sorular.secenek5 %>
+                </label>
+            </div>
+        </div>
+    </form>
+    <% } else { %>
+        <div class="finish-button" style="align-self: center; justify-self: flex-start; width: 50%;">
+            <button onclick="sendQuestions" style="width: 100%; height: 80px; font-size: 20px; background-color: #000000; border: 1px solid #ffffff; color: #ffffff; cursor: pointer; padding: 10px;">Soruları Bitir</button>
+        </div>
+        <% } %>

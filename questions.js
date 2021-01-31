@@ -46,6 +46,9 @@ const sorular = [
         secenek3: 'Kumar oynamak',
         secenek4: 'Yalan söylemek',
         secenek5: 'Yok'
+    },
+    {
+        bitti: 'son soru'
     }
 ]
 
