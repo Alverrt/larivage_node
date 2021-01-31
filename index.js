@@ -4,9 +4,22 @@ const bodyParser = require('body-parser')
 
 const sorular = require('./questions.js');
 const descs = require('./roledescs.js');
+const databaseFunctions = require('./databaseFunctions.js');
 
 const app = express()
 const port = 3000
+
+require('dotenv').config()
+
+// Database connection
+var mysql = require('mysql')
+var connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_DB
+})
+const data = databaseFunctions.initFunctions(connection)
 
 app.use(express.static(__dirname + '/public'/*, { redirect: false }*/))
 app.set('view engine', 'ejs')
@@ -45,8 +58,13 @@ app.get('/roleprofile', checkSession, (req, res) => {
   res.render('roleprofile/roleprofile.ejs', { avatar, sorular, index })
 })
 
-app.post('/login', (req, res) => {
+app.post('/login', async (req, res) => {
   req.session.guid = req.body.guid
+  const dell = await data.checkLogin(req.body.guid)
+  console.log(dell)
+  if (dell[0].guidCount == 1) {
+    console.log('oldulaa')
+  }
   res.redirect('/rolebase')
 })
 

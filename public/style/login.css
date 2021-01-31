@@ -1,3 +1,11 @@
+.bg {
+    width: 100%;
+    background-image: url('/img/roleBaseBG.jpeg');
+    background-size: cover;
+    background-blend-mode: saturation;
+    height: 100%;
+}
+
 .container {
     width: 75%;
     margin: 0 auto;
@@ -8,8 +16,8 @@
 }
 
 .login-form {
-    background: rgba(0, 0, 0, .9);
-    padding: 24px;
+    background: rgba(0, 0, 0, .8);
+    padding: 36px;
     color: #ffffff;
     border-radius: 16px;
 }

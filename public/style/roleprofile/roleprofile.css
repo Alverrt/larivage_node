@@ -132,6 +132,10 @@
     font-size: 20px;
 }
 
+.role-desc {
+    width: 90%;
+}
+
 .button-group {
     flex: 0 1 20%;
     height: 95%;
