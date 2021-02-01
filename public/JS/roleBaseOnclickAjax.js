@@ -1,12 +1,28 @@
+const roleLimitWarning = 'Seçtiğiniz rol başvuruya kapalı veya kontenjanı dolmuş durumda. Lütfen başka rol seçiniz.'
 
-const sendAvatarAndLabel = (imgsrc, label, roleCode) => {
-    $.post('/roleinfo', {
+const sendRoleInfo = (imgsrc, label, roleCode) => {
+    const data = {
         imgsrc: imgsrc,
         label: label,
         roleCode: roleCode
-    }, () => {
-        window.location.href = '/roleprofile'
-    })
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/roleinfo",
+        data: data,
+        dataType: "text",
+        success: function (response) {
+            var res = parseInt(response)
+            if (res === 1) {
+                window.location.href = '/roleprofile'
+            } else if (res === 0) {
+                $('.alert-container').css('display', 'flex')
+                $('.alert-text').text(roleLimitWarning)
+                $('#back').text('Tamam')
+            }
+        }
+    });
 }
 
 for (let i = 0; i < roles.length; i++) {
@@ -14,6 +30,10 @@ for (let i = 0; i < roles.length; i++) {
         const avatarSrc = e.target.closest('img').getAttribute('src')
         const avatarLabel = e.target.closest('div').getAttribute('data-role-desc')
         const roleCode = e.target.closest('div').getAttribute('data-role-number')
-        sendAvatarAndLabel(avatarSrc, avatarLabel, roleCode)
+        sendRoleInfo(avatarSrc, avatarLabel, roleCode)
     })    
 }
+
+$('#back').on('click', () => {
+    $('.alert-container').css('display', 'none')
+})

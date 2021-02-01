@@ -58,7 +58,7 @@ app.get('/roleprofile', checkSession, (req, res) => {
   res.render('roleprofile/roleprofile.ejs', { avatar, sorular, index })
 })
 
-app.post('/login', async (req, res) => {
+app.post('/login', checkSession, async (req, res) => {
   req.session.guid = req.body.guid
 
   const isRegistered = await data.checkLogin(req.body.guid)
@@ -74,12 +74,17 @@ app.post('/login', async (req, res) => {
   }
 })
 
-app.post('/roleinfo', checkSession, (req, res) => {
-  avatar.img = req.body.imgsrc
-  avatar.label = req.body.label
-  let roleCode = parseInt(req.body.roleCode)
-  avatar.desc = descs[roleCode]
-  res.redirect('/roleprofile')
+app.post('/roleinfo', checkSession, async (req, res) => {
+  const isRoleAvailable = await data.checkIfRoleAvailable(req.body.roleCode)
+  if (isRoleAvailable[0].isAvailable === 0) {
+    res.status(200).send('0')
+  } else if (isRoleAvailable[0].isAvailable === 1) {    
+    avatar.img = req.body.imgsrc
+    avatar.label = req.body.label
+    let roleCode = parseInt(req.body.roleCode)
+    avatar.desc = descs[roleCode]
+    res.status(200).send('1')
+  }
 })
 
 app.post('/question', (req, res) => {

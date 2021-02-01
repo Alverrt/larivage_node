@@ -1,4 +1,4 @@
-var noWhtls = 'GUID kaydınız whitelistte bulunamadı. Whitelist kaydı için Discord sunucusuna gitmelisiniz.'
+var noWhtls = 'GUID kaydınız whitelistte bulunamadı. Whitelist kaydı için Discord sunucusuna gitmelisiniz. ' + '<a href= "https://forms.gle/qsB2JzzCmBdsmson9">Başvuru Linki<a/>'
 var joinLimit = 'Rol başvuru limitine ulaşmışsınız (en fazla 3 başvuru). Rol başvurunuz reddedilirse tekrar başvuru yapabilirsiniz.'
 var noEmptyInput = 'Tüm boşlukları doldurmanız gereklidir.'
 var danger = 'Eğer discord nickinizi yanlış yazarsanız başvurunuzun sonucunu öğrenemezsiniz ve IC nick kısmına yazdığınız nick ile sadece sunucuya giriş yapabilirsiniz. Bilgileri doğru girdiğinizden emin misiniz?'
@@ -22,7 +22,7 @@ function checkers() {
                 window.location.href = '/rolebase'
             } else if (res === 0) {
                 $('.alert-container').css('display', 'flex')
-                $('.alert-text').text(noWhtls)
+                $('.alert-text').html(noWhtls)
             } else if (res === -1) {
                 $('.alert-container').css('display', 'flex')
                 $('.alert-text').text(joinLimit)
