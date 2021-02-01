@@ -6,6 +6,7 @@
 </head>
 
 <body>
+    <%- include('../alert.ejs')  %> 
     <div class="bg">
         <div class="container">
             <div class="login-form">
@@ -15,15 +16,16 @@
                         <p class="guid-label">GUID:</p>
                         <input type="text" inputmode="numeric" name="guid" id="guidArea"> <!-- only number check -->
                         <p class="nick-label">IC Seçtiğiniz Nick:</p>
-                        <input type="text" name="nick"> <!-- nick -->
+                        <input type="text" name="nick" id="nickArea"> <!-- nick -->
                         <p class="dc-label">Discord Adresiniz:</p>
-                        <input type="text" name="dc">
+                        <input type="text" name="dc" id="dcArea">
                         <button class="login-button" type="submit">Giris Yap</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    <script src="/JS/loginPageAjax.js"></script>
 </body>
 
 </html>

@@ -51,7 +51,7 @@ app.get('/rolebase', checkSession, (req, res) => {
   res.render('rolebase/chooseRole.ejs')
 })
 
-const avatar = { }
+const avatar = {}
 let index = 0
 
 app.get('/roleprofile', checkSession, (req, res) => {
@@ -60,19 +60,25 @@ app.get('/roleprofile', checkSession, (req, res) => {
 
 app.post('/login', async (req, res) => {
   req.session.guid = req.body.guid
-  const dell = await data.checkLogin(req.body.guid)
-  console.log(dell)
-  if (dell[0].guidCount == 1) {
-    console.log('oldulaa')
+
+  const isRegistered = await data.checkLogin(req.body.guid)
+  if (req.body.nick != '' && req.body.dc != '' && req.body.guid != '') {
+    if (isRegistered[0].guidCount == 1) {
+      res.status(200).send('1')
+
+    } else {
+      res.status(200).send('0')
+    }
+  } else {
+    res.status(200).send('-2')
   }
-  res.redirect('/rolebase')
 })
 
 app.post('/roleinfo', checkSession, (req, res) => {
   avatar.img = req.body.imgsrc
   avatar.label = req.body.label
   let roleCode = parseInt(req.body.roleCode)
-  avatar.desc =  descs[roleCode]
+  avatar.desc = descs[roleCode]
   res.redirect('/roleprofile')
 })
 

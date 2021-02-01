@@ -2,7 +2,6 @@ const initFunctions = (conn) => {
     const actions = {
         checkLogin: (guid) => {
             return new Promise((resolve, reject) => {
-                conn.connect()
                 const sql = 'SELECT COUNT(*) AS guidCount FROM whitelist WHERE guid = ?'
                 conn.query(sql, [guid], (err, result, fields) => {
                     if (err) throw err
