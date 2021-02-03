@@ -110,7 +110,7 @@ input {
     color: #ffffff;
 }
 
-.button-group {
+.alert-button-group {
     display: flex;
     gap: 15px;
 }

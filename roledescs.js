@@ -24,7 +24,9 @@ gammazci= 21
 marangoz=22
 yalensiginmaci=23
 */
-
+const roleNames = ['Kont', 'Muhafız Kumandanı', 'Vali', 'Lonca Başkanı', 'Başrahip', 'Muhafız Eri', 'Muhtar', 'Rahip', 'Demirci',
+    'Terzi', 'Hancı', 'Seyis', 'İsyancı Lideri', 'Orman Haydut Lideri', 'Ayrılıkçılar', 'İsyan Askeri', 'Çiftlik Sahibi', 'Çapulcu',
+    'Kelle Avcısı', 'Çiftçi', 'Kumarbaz', 'Gammazcı', 'Marangoz', 'Yalen Sığınmacısı']
 
 const desc = [
 /* 0 */    'Şehir ve çevresindeki toprakların yöneticisidir. Şehri, Kral adına yöneten kişidir. Şehir içerisinde sivillerin güvenliğini ve Krallığın çıkarlarını korumakla yükümlüdür. . Şehrin iç düzeni ile ilgili kararları verir. Vali ve Muhafız kumandanı, Kont\'a hizmet eder. İsyan iddialarına karşı Kont, yönetiminin meşruluğunu kanıtlamalı ve devam ettirmelidir.',
@@ -53,4 +55,4 @@ const desc = [
 /* 23 */    'Yalen Şehrindeki istiladan sonra Karthas Şehrine sığınan kişilerdir.'
 ]
 
-module.exports = desc
+module.exports = { desc, roleNames }

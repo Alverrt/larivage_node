@@ -34,8 +34,16 @@ app.use(cookieSession({
 const checkSession = (req, res, next) => {
   if (!req.session.guid) {
     res.redirect('/')
+  } else {
+    next()
   }
-  next()
+}
+
+const insertBanInfoIfNotExist = async (guid) => {
+  const existence = await data.checkIfExistInBanlist(guid)
+  if (existence[0].isExist === 0) {
+    await data.saveToBanlist(guid)
+  }
 }
 
 
@@ -58,12 +66,15 @@ app.get('/roleprofile', checkSession, (req, res) => {
   res.render('roleprofile/roleprofile.ejs', { avatar, sorular, index })
 })
 
-app.post('/login', checkSession, async (req, res) => {
+app.post('/login', async (req, res) => {
   req.session.guid = req.body.guid
+  req.session.nick = req.body.nick
+  req.session.dc = req.body.dc
 
   const isRegistered = await data.checkLogin(req.body.guid)
   if (req.body.nick != '' && req.body.dc != '' && req.body.guid != '') {
     if (isRegistered[0].guidCount == 1) {
+      await insertBanInfoIfNotExist(req.body.guid)
       res.status(200).send('1')
 
     } else {
@@ -78,11 +89,12 @@ app.post('/roleinfo', checkSession, async (req, res) => {
   const isRoleAvailable = await data.checkIfRoleAvailable(req.body.roleCode)
   if (isRoleAvailable[0].isAvailable === 0) {
     res.status(200).send('0')
-  } else if (isRoleAvailable[0].isAvailable === 1) {    
+  } else if (isRoleAvailable[0].isAvailable === 1) {
     avatar.img = req.body.imgsrc
     avatar.label = req.body.label
     let roleCode = parseInt(req.body.roleCode)
-    avatar.desc = descs[roleCode]
+    avatar.desc = descs.desc[roleCode]
+    avatar.roleCode = req.body.roleCode
     res.status(200).send('1')
   }
 })
@@ -96,6 +108,51 @@ app.post('/question', (req, res) => {
   // res.redirect('/roleprofile')
   res.sendStatus(200)
   console.log(req.body.index)
+})
+
+app.post('/roleregister', async (req, res) => {
+  const isRoleAvailable = await data.checkIfRoleAvailable(req.body.code)
+  console.log(isRoleAvailable)
+  if (isRoleAvailable[0].isAvailable === 0) {
+    res.status(200).send('0')
+
+  } else if (isRoleAvailable[0].isAvailable === 1) {
+    const previousRoleRequestCount = await data.checkApplicationCount(req.session.guid)
+
+    if (previousRoleRequestCount[0].appCount < 3) {
+      const isBanned = await data.checkIfUserBanned(req.session.guid)
+      if (isBanned[0].is_banned === 0) {
+
+        if (req.session.nick && req.session.dc) {
+          const ic_nick = req.session.nick
+          const dc_nick = req.session.dc
+          const guid = req.session.guid
+          const rolecode = req.body.code
+          console.log(rolecode)
+
+          await data.registerRole(guid, ic_nick, dc_nick, rolecode)
+          const roleLimitReached = await data.checkApplicationCount(guid)
+
+          res.status(200).send('1') // hersey okey rolebaseye yonlendir
+
+
+        } else {
+          req.session = null
+          res.status(200).send('-4') //sessionlarda hata var
+        }
+      } else {
+        req.session = null
+        res.status(200).send('-3') // ban yemissin
+      }
+
+    } else {
+      req.session = null
+      res.status(200).send('-1') // role sinirini doldurdun en fazla 3 basvuruyu gectin
+    }
+
+  }
+
+
 })
 
 app.listen(port, () => {
