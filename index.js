@@ -85,17 +85,37 @@ app.post('/login', async (req, res) => {
   }
 })
 
+const checkIfUndefined = (obj, prop) => {
+  if (typeof obj !== 'undefined' && obj.length > 0) {
+    return true
+  } else {
+    return false
+  }
+}
+
 app.post('/roleinfo', checkSession, async (req, res) => {
   const isRoleAvailable = await data.checkIfRoleAvailable(req.body.roleCode)
-  if (isRoleAvailable[0].isAvailable === 0) {
+  if (isRoleAvailable !== 'undefined' && isRoleAvailable.length > 0) {
+    if (isRoleAvailable[0].isAvailable === 0) {
+      res.status(200).send('0')
+    } else if (isRoleAvailable[0].isAvailable === 1) {
+      let roleCode = parseInt(req.body.roleCode)
+      const roleDescs = await data.getRoleDescs(roleCode)
+      if (typeof roleDescs !== 'undefined' && roleDescs.length > 0) {
+        avatar.img = req.body.imgsrc
+        avatar.label = req.body.label
+        avatar.updesc = roleDescs[0].role_up_desc
+        avatar.desc = roleDescs[0].role_down_desc
+        avatar.roleCode = req.body.roleCode
+        res.status(200).send('1')
+      } else {
+        avatar.img = req.body.imgsrc
+        avatar.label = req.body.label
+        avatar.roleCode = req.body.roleCode
+      }
+    }
+  } else {
     res.status(200).send('0')
-  } else if (isRoleAvailable[0].isAvailable === 1) {
-    avatar.img = req.body.imgsrc
-    avatar.label = req.body.label
-    let roleCode = parseInt(req.body.roleCode)
-    avatar.desc = descs.desc[roleCode]
-    avatar.roleCode = req.body.roleCode
-    res.status(200).send('1')
   }
 })
 
@@ -107,12 +127,10 @@ app.post('/question', (req, res) => {
   }
   // res.redirect('/roleprofile')
   res.sendStatus(200)
-  console.log(req.body.index)
 })
 
 app.post('/roleregister', async (req, res) => {
   const isRoleAvailable = await data.checkIfRoleAvailable(req.body.code)
-  console.log(isRoleAvailable)
   if (isRoleAvailable[0].isAvailable === 0) {
     res.status(200).send('0')
 
@@ -128,7 +146,6 @@ app.post('/roleregister', async (req, res) => {
           const dc_nick = req.session.dc
           const guid = req.session.guid
           const rolecode = req.body.code
-          console.log(rolecode)
 
           await data.registerRole(guid, ic_nick, dc_nick, rolecode)
           const roleLimitReached = await data.checkApplicationCount(guid)

@@ -92,6 +92,20 @@ const initFunctions = (conn) => {
                 })
             })
 
+        },
+        getRoleDescs: (roleCode) => {
+            return new Promise((resolve, reject) => {
+                const sql = 'SELECT role_up_desc, role_down_desc FROM website_roledesc WHERE role_code = ?'
+                conn.query(sql, [roleCode], (err, result, fields) => {
+                    if (err) throw err
+                    if (result === undefined) {
+                        reject(new Error('Veritabanindan geri donus alinamadi'))
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+
         }
     }
     return actions

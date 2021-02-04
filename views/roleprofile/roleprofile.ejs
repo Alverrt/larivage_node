@@ -7,45 +7,47 @@
 </head>
 
 <body>
-    <%- include('../alert.ejs')  %> 
-    <%- include('../navbar.ejs') %>
-        <div class="bg">
-            <div class="container">
-                <div class="wrapper">
-                    <div class="role-profile-frame">
-                        <div class="frame-row-big">
-                            <div class="portre-frame">
-                                <div class="portre">
-                                    <img width="65%" src=<%= avatar.img %>  alt="avatar">
+    <%- include('../alert.ejs') %>
+        <%- include('../navbar.ejs') %>
+            <div class="bg">
+                <div class="container">
+                    <div class="wrapper">
+                        <div class="role-profile-frame">
+                            <div class="frame-row-big">
+                                <div class="portre-frame">
+                                    <div class="portre">
+                                        <img width="65%" src=<%=avatar.img %> alt="avatar">
+                                    </div>
+                                    <div class="portre-label" data-role-code=<%=avatar.roleCode %> >
+                                        <p>
+                                            <%= avatar.label %>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div class="portre-label" data-role-code= <%= avatar.roleCode %> >
-                                    <p><%= avatar.label %></p> 
-                                </div>
-                            </div>
-                            <div class="character-story">
-                                <div class="character-story-child">
-                                     
-                                </div>
-                            </div>
-                        </div>
-                        <div class="frame-row-small">
-                            <div class="task-area">
-                                <div class="role-desc">
-                                    <%= avatar.desc %> 
+                                <div class="character-story">
+                                    <div class="character-story-child">
+                                        <%= avatar.updesc %>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="button-group">
-                                <!--<button id="next-ques">Sonraki Soru</button> -->
-                                <!--<button id="prev-ques">Önceki Soru</button> -->
-                                <button id="dc-link">Discord Link</button>
-                                <button id="sendRoleApp">Başvuru Gönder</button>
+                            <div class="frame-row-small">
+                                <div class="task-area">
+                                    <div class="role-desc">
+                                        <%= avatar.desc %>
+                                    </div>
+                                </div>
+                                <div class="button-group">
+                                    <!--<button id="next-ques">Sonraki Soru</button> -->
+                                    <!--<button id="prev-ques">Önceki Soru</button> -->
+                                    <button id="dc-link">Discord Link</button>
+                                    <button id="sendRoleApp">Başvuru Gönder</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <script src="/JS/roleProfile.js"></script>
+            <script src="/JS/roleProfile.js"></script>
 </body>
 
 </html>
