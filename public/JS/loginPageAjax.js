@@ -1,5 +1,5 @@
 var noWhtls = 'GUID kaydınız whitelistte bulunamadı. Whitelist kaydı için Discord sunucusuna gitmelisiniz. ' + '<a href= "https://forms.gle/qsB2JzzCmBdsmson9">Başvuru Linki<a/>'
-var joinLimit = 'Rol başvuru limitine ulaşmışsınız (en fazla 3 başvuru). Rol başvurunuz reddedilirse tekrar başvuru yapabilirsiniz.'
+var joinLimit = 'Sisteme giriş yapmanız yönetici tarafından kısıtlanmış. Daha fazla bilgi için <a href="https://discord.gg/M9VJR3hqNZ">discord</a> sunucusundan yetkililere ulaşın.'
 var noEmptyInput = 'Tüm boşlukları doldurmanız gereklidir.'
 var danger = 'Eğer discord nickinizi yanlış yazarsanız başvurunuzun sonucunu öğrenemezsiniz ve IC nick kısmına yazdığınız nick ile sadece sunucuya giriş yapabilirsiniz. Bilgileri doğru girdiğinizden emin misiniz?'
 
@@ -25,7 +25,7 @@ function checkers() {
                 $('.alert-text').html(noWhtls)
             } else if (res === -1) {
                 $('.alert-container').css('display', 'flex')
-                $('.alert-text').text(joinLimit)
+                $('.alert-text').html(joinLimit)
             } else if (res === -2) {
                 $('.alert-container').css('display', 'flex')
                 $('.alert-text').text(noEmptyInput)

@@ -7,7 +7,7 @@ const descs = require('./roledescs.js');
 const databaseFunctions = require('./databaseFunctions.js');
 
 const app = express()
-const port = 3000
+const port = 80
 
 require('dotenv').config()
 
@@ -43,6 +43,14 @@ const insertBanInfoIfNotExist = async (guid) => {
   const existence = await data.checkIfExistInBanlist(guid)
   if (existence[0].isExist === 0) {
     await data.saveToBanlist(guid)
+    return true
+  } else {
+    const isBanned = await data.checkIfUserBanned(guid)
+    if (isBanned[0].is_banned === 0) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 
@@ -74,9 +82,11 @@ app.post('/login', async (req, res) => {
   const isRegistered = await data.checkLogin(req.body.guid)
   if (req.body.nick != '' && req.body.dc != '' && req.body.guid != '') {
     if (isRegistered[0].guidCount == 1) {
-      await insertBanInfoIfNotExist(req.body.guid)
-      res.status(200).send('1')
-
+      if (await insertBanInfoIfNotExist(req.body.guid)) {
+        res.status(200).send('1')
+      } else {
+        res.status(200).send('-1')
+      }
     } else {
       res.status(200).send('0')
     }
