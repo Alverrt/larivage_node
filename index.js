@@ -1,6 +1,7 @@
 const express = require('express')
 const cookieSession = require('cookie-session')
 const bodyParser = require('body-parser')
+const admin = require('./admin.js')
 
 const sorular = require('./questions.js');
 const descs = require('./roledescs.js');
@@ -54,6 +55,7 @@ const insertBanInfoIfNotExist = async (guid) => {
   }
 }
 
+app.use('/admin', admin)
 
 app.get('/', (req, res) => {
   /*if (req.session.guid) {
